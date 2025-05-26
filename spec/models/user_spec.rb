@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe User, type: :model do
   context "validations" do
-    it { validates_presence_of(:email).uniqueness(true) }
-    it { validates_presence_of(:username).uniqueness(true) }
+    it { should validate_presence_of(:email) }
+    it { should validate_presence_of(:username) }
   end
 end
