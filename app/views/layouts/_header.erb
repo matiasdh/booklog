@@ -1,0 +1,21 @@
+<nav class="bg-white shadow-sm border-gray-300 border-b">
+  <div class="mx-auto px-6 lg:px-8 max-w-7xl">
+    <div class="flex justify-between items-center h-16">
+      <div class="flex flex-1 justify-center sm:justify-start items-center sm:items-stretch font-ex">
+        <div class="flex items-center shrink-0">
+          <%= link_to "📚 Booklog", root_path, class: "font-serif font-bold text-lg italic" %>
+        </div>
+        <div class="block sm:ml-6">
+          <div class="flex space-x-4">
+            <!-- Current: "bg-gray-900 text-white", Default: "text-gray-900 hover:bg-indigo-700 hover:text-white" -->
+            <%= link_to "My profile", '', class: "hover:bg-indigo-700 px-3 py-2 rounded-md font-medium text-gray-900 hover:text-white text-sm" %>
+          </div>
+        </div>
+      </div>
+      <div class="right-0 sm:static absolute inset-y-0 sm:inset-auto flex items-center sm:ml-6 pr-2 sm:pr-0">
+        <%= link_to "Log out", destroy_user_session_path, method: :delete, data: { turbo_method: :delete }, class: "hover:bg-red-700 px-3 py-2 rounded-md font-medium text-red-600 hover:text-white text-sm" %>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>

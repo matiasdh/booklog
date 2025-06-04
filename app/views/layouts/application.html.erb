@@ -22,7 +22,22 @@
     <%= javascript_importmap_tags %>
   </head>
 
-  <body>
-    <%= yield %>
+  <body class="flex flex-col bg-gray-200 min-h-screen font-normal text-gray-900">
+    <%= render "layouts/header" %>
+
+    <main class="flex-grow mx-auto px-4 py-6 max-w-4xl container">
+      <% flash.each do |type, message| %>
+        <% flash_class = case type.to_sym
+           when :notice then "bg-green-100 text-green-800 border border-green-200"
+           when :alert  then "bg-amber-100 text-amber-800 border border-amber-200"
+           else "bg-gray-100 text-gray-800 border border-gray-200"
+        end %>
+        <div class="mb-4 px-4 py-3 rounded text-sm <%= flash_class %>">
+          <%= message %>
+        </div>
+      <% end %>
+
+      <%= yield %>
+    </main>
   </body>
 </html>
