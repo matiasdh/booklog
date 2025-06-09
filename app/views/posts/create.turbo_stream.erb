@@ -1,0 +1,2 @@
+<%= turbo_stream.replace "new-post-form" do %> <%= render "form", post: Post.new %> <% end %>
+<%= turbo_stream.prepend "posts-list" do %> <%= render "post", post: @post %> <% end %>

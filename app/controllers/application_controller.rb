@@ -16,6 +16,7 @@ class ApplicationController < ActionController::Base
   private
 
   def layout_by_resource
+    return "turbo_rails/frame" if turbo_frame_request?
     devise_controller? ? "devise" : "application"
   end
 end
