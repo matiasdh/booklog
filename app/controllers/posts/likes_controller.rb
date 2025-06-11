@@ -1,15 +1,4 @@
-class PostsController < ApplicationController
-  def index
-    @posts = Post.includes(:likes, :user).order(created_at: :desc)
-  end
-
-  def show
-  end
-
-  def create
-    @post = current_user.posts.create!(post_params)
-  end
-
+class Posts::LikesController < ApplicationController
   def like
     return head :unprocessable_entity if post.liked_by?(current_user)
 
@@ -24,14 +13,7 @@ class PostsController < ApplicationController
     render :like
   end
 
-  def destroy
-  end
-
   private
-
-  def post_params
-    params.expect(post: [ :body ])
-  end
 
   def post
     @post ||= Post.find(params[:id])
