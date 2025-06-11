@@ -1,0 +1,14 @@
+<div class="flex items-start space-x-3">
+  <div class="flex justify-center items-center bg-gray-400 rounded-full w-8 h-8 font-semibold text-white text-sm">
+    <%= comment.user.username.first.upcase %>
+  </div>
+  <div class="flex-1 text-gray-700 text-sm">
+    <p class="font-semibold text-gray-900">
+      @<%= comment.user.username %>
+      <span class="text-gray-500" data-controller="time-ago" data-time-ago-datetime-value="<%= comment.created_at.iso8601 %>">
+        <%= time_ago_in_words(comment.created_at) %> ago
+      </span>
+    </p>
+    <p class="mt-1"><%= comment.body %></p>
+  </div>
+</div>

@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   resources :users, only: %i[show edit update]
   resources :posts, only: %i[index show create destroy] do
     member do
+      resources :comments, only: %i[create], controller: "posts/comments", as: :post_comments
       post :like, controller: "posts/likes"
       delete :like, action: :unlike, controller: "posts/likes"
     end
