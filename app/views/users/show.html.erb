@@ -1,0 +1,24 @@
+<div class="space-y-6 mx-auto p-6 max-w-3xl">
+  <!-- User profile -->
+  <div class="space-y-4 bg-white shadow p-6 rounded-2xl">
+    <div class="flex items-center space-x-4">
+      <div class="flex justify-center items-center bg-indigo-500 rounded-full w-16 h-16 font-bold text-white text-2xl">
+        <%= current_user.username.first.upcase %>
+      </div>
+      <div>
+        <h1 class="font-semibold text-gray-900 text-xl">@<%= current_user.username %></h1>
+        <p class="text-gray-600 text-sm"><%= current_user.email %></p>
+      </div>
+    </div>
+    <div class="text-right">
+      <%= link_to "Editar perfil", edit_profile_path, data: { turbo_frame: "modal", turbo_action: "advance" }, class: "text-sm text-blue-600 hover:underline" %>
+    </div>
+  </div>
+
+  <!-- Posts list -->
+  <div class="space-y-3" id="posts-list">
+    <%= turbo_stream_from "posts" %>
+    <%= render partial: 'posts/post', collection: current_user.posts, locals: { user: current_user } %>
+  </div>
+
+</div>

@@ -51,7 +51,7 @@
       <!-- Comments -->
       <% if post.comments.any? %>
         <div class="space-y-4 mt-4 pt-4 border-gray-200 border-t">
-          <%= render partial: "posts/comments/comment", collection: post.comments.order(created_at: :desc) %>
+          <%= render partial: "posts/comments/comment", collection: post.sorted_comments_by_date %>
         </div>
       <% end %>
     </div>

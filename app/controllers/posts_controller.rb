@@ -1,6 +1,6 @@
 class PostsController < ApplicationController
   def index
-    @posts = Post.includes(:likes, :user).order(created_at: :desc)
+    @posts = Post.includes(:likes, :user, comments: [ :user ]).references(:comments).order(posts: { created_at: :desc }, comments: { created_at: :desc })
   end
 
   def show
