@@ -322,5 +322,21 @@ __metadata:
     "@hotwired/turbo-rails": "npm:^8.0.16"
     "@rails/request.js": "npm:^0.0.12"
     esbuild: "npm:^0.25.5"
+    timeago.js: "npm:^4.0.2"
+    zod: "npm:^3.25.67"
   languageName: unknown
   linkType: soft
+
+"timeago.js@npm:^4.0.2":
+  version: 4.0.2
+  resolution: "timeago.js@npm:4.0.2"
+  checksum: 10c0/e4cf66df2dfa2bc17db6e7a7c591d1e877e09e91e118784347a0b2390c38d7d292d2742e29edde9cdf4eaec61e8c4ef9b9f9c8b539f03d2613403dd7ccfc6cc8
+  languageName: node
+  linkType: hard
+
+"zod@npm:^3.25.67":
+  version: 3.25.67
+  resolution: "zod@npm:3.25.67"
+  checksum: 10c0/80a0cab3033272c4ab9312198081f0c4ea88e9673c059aa36dc32024906363729db54bdb78f3dc9d5529bd1601f74974d5a56c0a23e40c6f04a9270c9ff22336
+  languageName: node
+  linkType: hard

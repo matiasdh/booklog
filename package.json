@@ -10,6 +10,8 @@
     "@hotwired/stimulus": "^3.2.2",
     "@hotwired/stimulus-webpack-helpers": "^1.0.1",
     "@hotwired/turbo-rails": "^8.0.16",
-    "@rails/request.js": "^0.0.12"
+    "@rails/request.js": "^0.0.12",
+    "timeago.js": "^4.0.2",
+    "zod": "^3.25.67"
   }
 }
