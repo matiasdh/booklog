@@ -20,7 +20,7 @@
       <div class="p-6">
         <h2 class="mb-4 font-semibold text-gray-800 text-xl">Edit Profile</h2>
 
-        <%= form_with model: current_user, url: profile_path, method: :patch, data: { turbo_frame: "_top" } do |f| %>
+        <%= form_with model: current_user, url: profile_path, method: :patch, data: { turbo_frame: "_top", controller: "editUserForm", data_action: "submit->editUserForm#validate" } do |f| %>
           <div class="space-y-5">
             <!-- Username -->
             <div>

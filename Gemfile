@@ -44,7 +44,7 @@ gem "thruster", require: false
 gem "devise", "~> 4.9"
 
 # Add requestjs for Rails
-gem 'requestjs-rails', '~> 0.0.11'
+gem "requestjs-rails", "~> 0.0.11"
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
@@ -79,3 +79,5 @@ gem "tailwindcss-ruby", "~> 4.1"
 gem "tailwindcss-rails", "~> 4.2"
 
 gem "rails_icons", "~> 1.3"
+
+gem "jsbundling-rails", "~> 1.3"
