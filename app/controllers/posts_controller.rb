@@ -3,6 +3,15 @@ class PostsController < ApplicationController
     @posts = Post.includes(:likes, :user, comments: [ :user ]).references(:comments).order(posts: { created_at: :desc }, comments: { created_at: :desc })
   end
 
+  def following
+    @posts = Post.includes(:likes, :user, comments: [ :user ])
+    .joins(user: :user_follows).references(:comments)
+    .where(user_follows: { follow: current_user })
+    .order(posts: { created_at: :desc }, comments: { created_at: :desc })
+
+    render :index
+  end
+
   def show
   end
 

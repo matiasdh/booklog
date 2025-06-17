@@ -2,6 +2,9 @@ Rails.application.routes.draw do
   devise_for :users
 
   resources :posts, only: %i[index show create destroy] do
+    collection do
+      get :following, action: :following, controller: "posts"
+    end
     member do
       resources :comments, only: %i[create], controller: "posts/comments", as: :post_comments
       post :like, controller: "posts/likes"
