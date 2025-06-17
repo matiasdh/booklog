@@ -9,7 +9,11 @@ class UsersController < ApplicationController
 
   # PATCH/PUT /users/1 or /users/1.json
   def update
-    current_user.update!(user_params)
+    if current_user.update(user_params)
+      render turbo_stream: helpers.tag.turbo_stream(action: "redirect", location: profile_path), notice: "Profile updated successfully."
+    else
+      render :edit, status: :unprocessable_entity
+    end
   end
 
 
