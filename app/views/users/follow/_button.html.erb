@@ -1,0 +1,13 @@
+<% classes = user.follows?(current_user) ? "bg-gray-200 hover:bg-gray-300 text-gray-800" : "bg-blue-600 hover:bg-blue-700 text-white" %>
+<% button_method = user.follows?(current_user) ? :delete : :post %>
+<% button_label = user.follows?(current_user) ? "Unfollow" : "Follow" %>
+<% button_icon = user.follows?(current_user) ? "user-minus" : "user-plus" %>
+<%= turbo_frame_tag user, "follow_button", class: "group/frame" do %>
+  <% unless current_user == user %>
+    <%= button_to follow_user_path(user), method: button_method, class: "rounded-md px-2 py-1 text-sm h-8 flex flex-row space-x-2 items-center w-26 #{classes}", data: { turbo_method: button_method } do %>
+      <%= icon "fading-dots", library: "animated", class: "size-4 hidden group-aria-[busy=true]/frame:block" %>
+      <%= icon button_icon, class: "size-4 group-aria-[busy=true]/frame:hidden" %>
+      <span><%=button_label%></span>
+    <% end %>
+  <% end %>
+<% end %>

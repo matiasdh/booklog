@@ -9,9 +9,12 @@ Rails.application.routes.draw do
     end
   end
 
-  get "profile" => "users#show", as: :profile
-  get "profile/edit" => "users#edit", as: :edit_profile
-  patch "profile" => "users#update", as: :update_profile
+  resources :users, only: %i[show edit update] do
+    member do
+      post :follow, action: :create, controller: "users/follow"
+      delete :follow, action: :destroy, controller: "users/follow"
+    end
+  end
 
   get "up" => "rails/health#show", as: :rails_health_check
 

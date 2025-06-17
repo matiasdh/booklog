@@ -3,22 +3,23 @@
   <div class="space-y-4 bg-white shadow p-6 rounded-2xl">
     <div class="flex items-center space-x-4">
       <div class="flex justify-center items-center bg-indigo-500 rounded-full w-16 h-16 font-bold text-white text-2xl">
-        <%= current_user.username.first.upcase %>
+        <%= user.username.first.upcase %>
       </div>
       <div>
-        <h1 class="font-semibold text-gray-900 text-xl">@<%= current_user.username %></h1>
-        <p class="text-gray-600 text-sm"><%= current_user.email %></p>
+        <h1 class="font-semibold text-gray-900 text-xl">@<%= user.username %></h1>
+        <p class="text-gray-600 text-sm"><%= user.email %></p>
       </div>
     </div>
+    <%= render partial: "users/follow/button", locals: { user: user } %>
     <div class="text-right">
-      <%= link_to "Editar perfil", edit_profile_path, data: { turbo_frame: "modal", turbo_action: "advance" }, class: "text-sm text-blue-600 hover:underline" %>
+      <%= link_to "Editar perfil", edit_user_path(user), data: { turbo_frame: "modal", turbo_action: "advance" }, class: "text-sm text-blue-600 hover:underline" %>
     </div>
   </div>
 
   <!-- Posts list -->
   <div class="space-y-3" id="posts-list">
     <%= turbo_stream_from "posts" %>
-    <%= render partial: 'posts/post', collection: current_user.posts, locals: { user: current_user } %>
+    <%= render partial: 'posts/post', collection: user.posts, locals: { user: user } %>
   </div>
 
 </div>

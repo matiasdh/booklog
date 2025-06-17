@@ -8,7 +8,7 @@
         <div class="block sm:ml-6">
           <div class="flex space-x-4">
             <!-- Current: "bg-gray-900 text-white", Default: "text-gray-900 hover:bg-indigo-700 hover:text-white" -->
-            <%= link_to "My profile", profile_path, class: "hover:bg-indigo-700 px-3 py-2 rounded-md font-medium text-gray-900 hover:text-white text-sm" %>
+            <%= link_to "My profile", user_path(current_user), class: "hover:bg-indigo-700 px-3 py-2 rounded-md font-medium text-gray-900 hover:text-white text-sm" %>
           </div>
         </div>
       </div>

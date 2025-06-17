@@ -14,4 +14,19 @@ class User < ApplicationRecord
   has_many :liked_posts, through: :likes, source: :post
 
   has_many :comments, dependent: :destroy
+
+  has_many :user_follows, dependent: :destroy
+  has_many :followed_users, through: :user_follows, source: :follow
+
+  def follows?(user)
+    user_follows.exists?(follow: user)
+  end
+
+  def follow(user)
+    user_follows.find_or_create_by(follow: user)
+  end
+
+  def unfollow(user)
+    user_follows.find_by(follow: user)&.destroy
+  end
 end
