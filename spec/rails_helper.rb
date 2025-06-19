@@ -70,3 +70,7 @@ RSpec.configure do |config|
   # arbitrary gems may also be filtered via:
   # config.filter_gems_from_backtrace("gem name")
 end
+
+Dir[Rails.root.join('spec', 'support', '**', '*.rb')].each do |file|
+  require file
+end
