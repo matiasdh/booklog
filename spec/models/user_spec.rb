@@ -2,7 +2,6 @@ require 'rails_helper'
 
 RSpec.describe User, type: :model do
   subject { create :user }
-  let(:user_1) { create :user }
   it "has a valid factory" do
     expect(subject).to be_valid
   end
@@ -10,5 +9,9 @@ RSpec.describe User, type: :model do
   context "validations" do
     it { is_expected.to validate_presence_of(:email) }
     it { is_expected.to validate_presence_of(:username) }
+  end
+
+  context "associations" do
+    it { is_expected.to have_many(:posts).dependent(:destroy) }
   end
 end
