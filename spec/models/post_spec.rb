@@ -18,6 +18,8 @@ RSpec.describe Post, type: :model do
     it { is_expected.to belong_to(:user).optional(false) }
     it { is_expected.to have_many(:likes).dependent(:destroy) }
     it { is_expected.to have_many(:liked_users).through(:likes).source(:user) }
+
+    it { is_expected.to have_many(:comments).dependent(:destroy) }
   end
 
   describe "#liked_by?" do
