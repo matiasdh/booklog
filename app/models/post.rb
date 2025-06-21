@@ -23,4 +23,12 @@ class Post < ApplicationRecord
   def remove_like_from(user:)
     likes.find_by(user: user)&.destroy.present?
   end
+
+  def sorted_comments_by_date
+    if comments.loaded?
+      comments.sort_by(&:created_at).reverse
+    else
+      comments.includes(:user).order(comments: { created_at: :desc })
+    end
+  end
 end

@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   #
   resources :posts, only: %i[index create] do
     member do
+      resources :comments, only: %i[create], controller: "posts/comments", as: :post_comments
       post :like, controller: "posts/likes"
       delete :like, action: :unlike, controller: "posts/likes"
     end

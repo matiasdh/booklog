@@ -70,4 +70,15 @@ RSpec.describe Post, type: :model do
       end
     end
   end
+
+  describe "#sorted_comments_by_date" do
+    it "returns comments in reverse chronological order" do
+      older = create(:comment, post: subject, created_at: 2.days.ago)
+      newer = create(:comment, post: subject, created_at: 1.day.ago)
+
+      sorted = subject.reload.sorted_comments_by_date
+      expect(sorted.first).to eq(newer)
+      expect(sorted.last).to eq(older)
+    end
+  end
 end
