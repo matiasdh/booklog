@@ -3,5 +3,5 @@
 <% end %>
 
 <%= turbo_stream.prepend "posts-list" do %>
-  <%= render "post", post: @post %>
+  <%= render "post", post: @post, user: current_user %>
 <% end %>

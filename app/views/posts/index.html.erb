@@ -2,5 +2,5 @@
 
 <div class="space-y-6 m-auto max-w-4xl" id="posts-list">
   <%= turbo_stream_from "posts" %>
-  <%= render partial: 'post', collection: @posts %>
+  <%= render partial: 'post', collection: @posts, locals: { user: current_user } %>
 </div>
