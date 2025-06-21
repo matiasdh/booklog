@@ -1,0 +1,141 @@
+
+  <div class="flex mx-auto max-w-6xl">
+    <!-- Sidebar -->
+    <aside class="top-0 sticky flex-shrink-0 bg-white p-8 border-gray-200 w-64 h-screen">
+      <nav class="space-y-4">
+        <h2 class="items-center font-semibold text-4xl text-center">BookLog</h2>
+        <ul class="space-y-6 pt-8 text-xl text-right">
+          <li><a href="#" class="block hover:text-blue-600">Inicio</a></li>
+          <li><a href="#" class="block hover:text-blue-600">Mi perfil</a></li>
+          <li><a href="#" class="block hover:text-blue-600">Configuración</a></li>
+        </ul>
+      </nav>
+    </aside>
+
+    <!-- Main content -->
+    <main class="flex-1">
+      <!-- Formulario sticky -->
+      <div class="top-0 z-10 sticky bg-white shadow-sm p-4 border-gray-200 border-b">
+        <form class="flex space-x-2">
+          <input type="text" placeholder="¿Qué estás leyendo?"
+                 class="flex-1 px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-indigo-200" />
+          <button type="submit"
+                  class="bg-indigo-600 hover:bg-indigo-700 px-4 py-2 rounded-md text-white">
+            Publicar
+          </button>
+        </form>
+      </div>
+
+      <!-- Feed de contenido -->
+      <div class="space-y-4 p-6">
+<article class="space-y-4 bg-white shadow p-4 rounded-md">
+  <!-- Encabezado con avatar y nombre -->
+  <div class="flex items-center space-x-3">
+    <img src="https://i.pravatar.cc/40?u=usuario" alt="Avatar" class="rounded-full w-10 h-10" />
+    <div>
+      <h3 class="font-semibold text-sm">@usuario</h3>
+      <p class="text-gray-500 text-xs">Publicado hace 2 horas</p>
+    </div>
+  </div>
+
+  <!-- Contenido del post -->
+  <p class="font-lexend text-gray-700 text-sm">Estoy leyendo "1984" de George Orwell. 📖</p>
+
+  <!-- Acciones -->
+  <div class="flex space-x-4 text-gray-500 text-sm">
+    <button class="flex items-center space-x-1 hover:text-blue-600">
+      <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7" />
+      </svg>
+      <span>Me gusta</span>
+    </button>
+    <button class="flex items-center space-x-1 hover:text-blue-600">
+      <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8h2a2 2 0 012 2v10l-4-4H7a2 2 0 01-2-2V8a2 2 0 012-2h2" />
+      </svg>
+      <span>Comentar</span>
+    </button>
+  </div>
+
+  <!-- Comentarios -->
+  <div class="space-y-3 mt-4">
+    <div class="flex items-start space-x-3">
+      <img src="https://i.pravatar.cc/32?u=commenter1" alt="avatar" class="rounded-full w-8 h-8" />
+      <div class="bg-gray-100 p-2 rounded-md text-sm">
+        <p><strong>@lector123:</strong> Ese libro me cambió la vida.</p>
+      </div>
+    </div>
+
+    <div class="flex items-start space-x-3">
+      <img src="https://i.pravatar.cc/32?u=commenter2" alt="avatar" class="rounded-full w-8 h-8" />
+      <div class="bg-gray-100 p-2 rounded-md text-sm">
+        <p><strong>@libromaníaco:</strong> Recomendás alguna edición?</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Formulario de comentario -->
+  <form class="flex space-x-2 mt-4">
+    <input type="text" placeholder="Escribí un comentario..." class="flex-1 px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-indigo-300 text-sm" />
+    <button type="submit" class="bg-indigo-600 hover:bg-indigo-700 px-3 py-2 rounded-md text-white text-sm">Comentar</button>
+  </form>
+</article>
+
+        <article class="bg-white shadow p-4 rounded-md">
+          <h3 class="font-semibold text-lg">@otro</h3>
+          <p class="font-lexend text-gray-600 text-sm">Arranqué "Rayuela". Veremos si me cambia la vida. 🤯</p>
+        </article>
+
+        <article class="bg-white shadow p-4 rounded-md">
+          <h3 class="font-semibold text-lg">@usuario</h3>
+          <p class="font-lexend text-gray-600 text-sm">Estoy leyendo "1984" de George Orwell. 📖</p>
+        </article>
+
+        <article class="bg-white shadow p-4 rounded-md">
+          <h3 class="font-semibold text-lg">@otro</h3>
+          <p class="font-lexend text-gray-600 text-sm">Arranqué "Rayuela". Veremos si me cambia la vida. 🤯</p>
+        </article>
+
+
+        <article class="bg-white shadow p-4 rounded-md">
+          <h3 class="font-semibold text-lg">@usuario</h3>
+          <p class="font-lexend text-gray-600 text-sm">Estoy leyendo "1984" de George Orwell. 📖</p>
+        </article>
+
+        <article class="bg-white shadow p-4 rounded-md">
+          <h3 class="font-semibold text-lg">@otro</h3>
+          <p class="font-lexend text-gray-600 text-sm">Arranqué "Rayuela". Veremos si me cambia la vida. 🤯</p>
+        </article>
+
+        <article class="bg-white shadow p-4 rounded-md">
+          <h3 class="font-semibold text-lg">@usuario</h3>
+          <p class="font-lexend text-gray-600 text-sm">Estoy leyendo "1984" de George Orwell. 📖</p>
+        </article>
+
+        <article class="bg-white shadow p-4 rounded-md">
+          <h3 class="font-semibold text-lg">@otro</h3>
+          <p class="font-lexend text-gray-600 text-sm">Arranqué "Rayuela". Veremos si me cambia la vida. 🤯</p>
+        </article>
+
+        <article class="bg-white shadow p-4 rounded-md">
+          <h3 class="font-semibold text-lg">@usuario</h3>
+          <p class="font-lexend text-gray-600 text-sm">Estoy leyendo "1984" de George Orwell. 📖</p>
+        </article>
+
+        <article class="bg-white shadow p-4 rounded-md">
+          <h3 class="font-semibold text-lg">@otro</h3>
+          <p class="font-lexend text-gray-600 text-sm">Arranqué "Rayuela". Veremos si me cambia la vida. 🤯</p>
+        </article>
+
+        <article class="bg-white shadow p-4 rounded-md">
+          <h3 class="font-semibold text-lg">@usuario</h3>
+          <p class="font-lexend text-gray-600 text-sm">Estoy leyendo "1984" de George Orwell. 📖</p>
+        </article>
+
+        <article class="bg-white shadow p-4 rounded-md">
+          <h3 class="font-semibold text-lg">@otro</h3>
+          <p class="font-lexend text-gray-600 text-sm">Arranqué "Rayuela". Veremos si me cambia la vida. 🤯</p>
+        </article>
+      </div>
+    </main>
+  </div>

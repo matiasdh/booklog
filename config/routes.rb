@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get "dashboard/index"
   devise_for :users
 
   resources :posts, only: %i[index show create destroy] do
@@ -22,4 +23,6 @@ Rails.application.routes.draw do
   get "up" => "rails/health#show", as: :rails_health_check
 
   root "posts#index"
+
+  get :dashboard, to: "dashboard#index"
 end

@@ -1,13 +1,14 @@
-<%= form_with model: post do |form| %>
-  <div class="mb-4" data-controller="hello">
-    <%= form.text_area :body,
-      placeholder: "What's on your mind?",
-      rows: 3,
-      class: "w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 resize-none" %>
+<div class="top-0 z-10 sticky">
+  <div class="top-0 absolute flex mask-b-from-80% backdrop-blur-sm w-full h-full">
   </div>
 
-  <div class="text-right">
+  <%= form_with model: post, class: "relative mx-2 pt-6 pb-8 flex space-x-2 text-lg" do |form| %>
+    <%= form.text_area :body,
+      placeholder: "What's on your mind?",
+      rows: 2,
+      class: "flex-grow p-3 border border-gray-300 bg-white rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500 resize-none" %>
+
     <%= form.submit 'Post',
-      class: "bg-blue-600 hover:bg-blue-700 text-white font-semibold px-5 py-2 rounded-lg transition duration-200" %>
-  </div>
-<% end %>
+      class: "size-20 flex bg-teal-300 text-black hover:text-white hover:bg-black rounded-full font-semibold px-5 py-2 transition hover:cursor-pointer" %>
+  <% end %>
+</div>

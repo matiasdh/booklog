@@ -57,6 +57,8 @@ group :development, :test do
   # Spec suite
   gem "rspec-rails", "~> 8.0.0"
   gem "factory_bot", "~> 6.5"
+
+  gem 'faker', '~> 3.4', '>= 3.4.2'
 end
 
 group :development do

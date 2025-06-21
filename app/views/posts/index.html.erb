@@ -1,9 +1,8 @@
-<div class="bg-white shadow-md mb-6 p-6 rounded-2xl">
-    <turbo-frame id="new-post-form">
-      <%= render 'form', post: Post.new %>
-    </turbo-frame>
-</div>
-<div class="space-y-6" id="posts-list">
+<turbo-frame id="new-post-form">
+  <%= render 'form', post: Post.new %>
+</turbo-frame>
+
+<div class="space-y-6 m-auto max-w-4xl" id="posts-list">
   <%= turbo_stream_from "posts" %>
   <%= render partial: 'post', collection: @posts, locals: { user: current_user } %>
 </div>
