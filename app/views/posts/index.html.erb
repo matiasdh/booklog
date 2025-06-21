@@ -1,12 +1,6 @@
-<div class="flex flex-col justify-center w-full">
-  <div class="bg-white shadow-md mb-6 p-6 rounded-2xl">
-      <turbo-frame id="new-post-form">
-        <%= render 'form', post: Post.new %>
-      </turbo-frame>
-  </div>
+<%= render 'form', post: Post.new %>
 
-  <div class="space-y-6" id="posts-list">
-    <%= turbo_stream_from "posts" %>
-    <%= render partial: 'post', collection: @posts %>
-  </div>
+<div class="space-y-6 m-auto max-w-4xl" id="posts-list">
+  <%= turbo_stream_from "posts" %>
+  <%= render partial: 'post', collection: @posts %>
 </div>
