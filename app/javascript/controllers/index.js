@@ -9,3 +9,6 @@ application.register("comments", CommentsController)
 
 import LikesController from "./likes_controller"
 application.register("likes", LikesController)
+
+import TimeAgoController from "./time_ago_controller"
+application.register("time-ago", TimeAgoController)

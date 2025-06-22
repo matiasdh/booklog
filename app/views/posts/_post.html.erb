@@ -11,6 +11,7 @@
         <div class="justify-between items-center">
           <%= link_to post.user.username, class: "text-xl font-bold font-lexend text-gray-900 hover:underline", data: {turbo_frame: "_top"} %>
           <p class="text-gray-500 text-sm italic"
+            data-controller="time-ago"
             data-time-ago-datetime-value="<%= post.created_at.iso8601 %>">
             <%= time_ago_in_words(post.created_at) %> ago
           </p>
