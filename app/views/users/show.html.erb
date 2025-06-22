@@ -13,8 +13,24 @@
   <div class="flex justify-center items-center mx-auto mt-4 h-12 transition">
     <% if current_user == user %>
       <%= link_to "Edit profile", edit_user_path(user),
-        class: "bg-gray-800 text-white px-6 py-2 rounded-full hover:bg-gray-700 transition", data: { turbo_frame: "modal", turbo_action: "advance" } %>
+        class: "bg-gray-800 text-white px-6 py-2 rounded-full hover:bg-gray-700 transition",
+        data: { turbo_frame: "modal", turbo_action: "advance" } %>
+    <% else %>
+      <%= render "users/follow/button", locals: { user: user } %>
     <% end %>
+  </div>
+
+  <!-- Followers / Following -->
+  <div class="flex justify-center space-x-10 mt-6 text-gray-700">
+    <div>
+      <p class="font-semibold text-xl">12</p>
+      <p class="text-sm">Followers</p>
+    </div>
+    <div class="border-black border-l-1 min-h-full"></div>
+    <div>
+      <p class="font-semibold text-xl">4</p>
+      <p class="text-sm">Following</p>
+    </div>
   </div>
 
   <h2 class="flex mt-16 w-full font-bold text-3xl">Posts</h2>
