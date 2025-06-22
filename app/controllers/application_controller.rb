@@ -6,6 +6,12 @@ class ApplicationController < ActionController::Base
 
   protected
 
+  def ensure_turbo_stream_request!
+    return if request.format.turbo_stream?
+
+    head :not_acceptable
+  end
+
   def configure_permitted_parameters
     devise_parameter_sanitizer.permit(:sign_up, keys: [ :username ])
   end

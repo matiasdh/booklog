@@ -1,4 +1,6 @@
 class Users::FollowController < ApplicationController
+  before_action :ensure_turbo_stream_request!, only: %i[ create destroy ]
+
   def create
     current_user.follow(user)
   end

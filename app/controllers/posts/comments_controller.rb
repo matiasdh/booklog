@@ -1,4 +1,6 @@
 class Posts::CommentsController < ApplicationController
+  before_action :ensure_turbo_stream_request!, only: %i[ create ]
+
   def create
     @comment = post.comments.new(comment_params)
     @comment.user = current_user
