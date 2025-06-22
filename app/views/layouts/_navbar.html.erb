@@ -7,6 +7,7 @@
     <ul class="space-y-2 bg-stone-50 p-4 rounded-3xl text-xl text-right">
       <% nav_items = [
         { label: "Discover", path: root_path, icon: "globe-alt" },
+        { label: "My profile", path: user_path(current_user), icon: "user" },
       ] %>
       <% nav_items.each do |item| %>
         <% active = current_page?(item[:path]) %>

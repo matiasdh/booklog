@@ -10,5 +10,8 @@ application.register("comments", CommentsController)
 import LikesController from "./likes_controller"
 application.register("likes", LikesController)
 
+import ModalController from "./modal_controller"
+application.register("modal", ModalController)
+
 import TimeAgoController from "./time_ago_controller"
 application.register("time-ago", TimeAgoController)

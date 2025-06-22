@@ -1,0 +1,52 @@
+<%= turbo_frame_tag "modal" do %>
+  <div role="dialog" tabindex="-1" data-controller="modal input-validator"
+       class="z-30 fixed inset-0 flex justify-center items-center p-2 w-full h-screen">
+
+    <!-- Backdrop -->
+    <div class="fixed inset-0 bg-gray-900/30 backdrop-blur-xs w-full h-screen cursor-default"
+         data-action="click->modal#closeModal keydown.esc@document->modal#closeModal"></div>
+
+    <!-- Modal container -->
+    <div class="z-20 relative bg-white shadow-xl rounded-xl w-full max-w-2xl max-h-screen overflow-y-auto">
+
+      <!-- Close icon (top-right) -->
+      <button type="button"
+              class="top-4 right-4 absolute hover:bg-gray-200 rounded-full size-10 text-gray-400 hover:text-gray-700 transition cursor-pointer"
+              aria-label="Close"
+              data-action="click->modal#closeModal">
+        ✕
+      </button>
+
+      <div class="p-6">
+        <h2 class="mb-4 font-semibold text-gray-800 text-xl">Edit Profile</h2>
+
+        <%= form_with model: user, url: user_path(user), method: :patch, data: { turbo_frame: "modal" } do |f| %>
+          <div class="space-y-5">
+            <!-- Username -->
+            <div>
+              <%= f.label :username, "Username", class: "block text-sm font-medium text-gray-700 mb-1" %>
+              <%= f.text_field :username, class: "block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-300 text-sm" %>
+
+              <% if user.errors[:username].present? %>
+                <p class="mt-1 text-red-600 text-sm">
+                  <%= user.errors[:username].join(", ") %>
+                </p>
+              <% end %>
+            </div>
+
+            <!-- Actions -->
+            <div class="flex justify-end space-x-2 pt-2">
+              <button type="button"
+                      class="hover:bg-gray-200 px-4 py-2 rounded text-gray-600 transition cursor-pointer"
+                      data-action="click->modal#closeModal">
+                Close
+              </button>
+
+              <%= f.submit "Save Changes", class: "bg-indigo-600 cursor-pointer hover:bg-indigo-700 text-white font-semibold px-4 py-2 rounded transition" %>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+<% end %>
