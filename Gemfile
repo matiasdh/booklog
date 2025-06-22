@@ -73,3 +73,5 @@ group :development do
 end
 
 gem "rails_icons", "~> 1.3"
+
+gem "jsbundling-rails", "~> 1.3"
