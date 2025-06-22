@@ -9,7 +9,9 @@
       <div class="flex-wrap flex-grow">
         <!-- Header -->
         <div class="justify-between items-center">
-          <%= link_to post.user.username, class: "text-xl font-bold font-lexend text-gray-900 hover:underline", data: {turbo_frame: "_top"} %>
+          <%= link_to user_path(post.user), class: "text-xl font-bold font-lexend text-gray-900 hover:underline", data: {turbo_frame: "_top"} do %>
+            @<%= post.user.username %>
+          <% end %>
           <p class="text-gray-500 text-sm italic"
             data-controller="time-ago"
             data-time-ago-datetime-value="<%= post.created_at.iso8601 %>">
