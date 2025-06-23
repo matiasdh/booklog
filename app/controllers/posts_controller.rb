@@ -3,6 +3,12 @@ class PostsController < ApplicationController
     @posts = Post.with_feed
   end
 
+  def following
+    @posts = Post.for_user(current_user).with_feed
+
+    render :index
+  end
+
   def create
     @post = current_user.posts.build(post_params)
 

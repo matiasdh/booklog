@@ -142,5 +142,37 @@ RSpec.describe Post, type: :model do
         Post.with_feed
       end
     end
+
+    describe ".for_user" do
+      let(:follower) { create(:user) }
+      let(:followed1) { create(:user) }
+      let(:followed2) { create(:user) }
+      let(:unrelated) { create(:user) }
+
+      let!(:follow1) { create(:user_follow, user: follower, follow: followed1) }
+      let!(:follow2) { create(:user_follow, user: follower, follow: followed2) }
+
+      let!(:post1) { create(:post, user: followed1, created_at: 2.days.ago) }
+      let!(:post2) { create(:post, user: followed2, created_at: 1.day.ago) }
+      let!(:post_unrelated) { create(:post, user: unrelated) }
+
+      subject(:feed) { Post.for_user(follower).order(created_at: :asc) }
+
+      it "returns only posts by users that the given user follows" do
+        expect(feed).to contain_exactly(post1, post2)
+      end
+
+      it "does not include posts by users not followed" do
+        expect(feed).not_to include(post_unrelated)
+      end
+
+      context "when the user follows no one" do
+        let(:user_with_no_posts) { create(:user) }
+
+        it "returns no posts" do
+          expect(Post.for_user(user_with_no_posts)).to be_empty
+        end
+      end
+    end
   end
 end

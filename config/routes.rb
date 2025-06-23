@@ -3,6 +3,9 @@ Rails.application.routes.draw do
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
   #
   resources :posts, only: %i[index create] do
+    collection do
+      get :following, action: :following, controller: "posts"
+    end
     member do
       resources :comments, only: %i[create], controller: "posts/comments", as: :post_comments
       post :like, controller: "posts/likes"

@@ -29,6 +29,30 @@ RSpec.describe "Posts", type: :request do
    end
   end
 
+  describe "GET /posts/following" do
+    context "when unauthenticated" do
+      it "redirects to login" do
+        get following_posts_path
+        expect(response).to have_http_status(:found)
+        expect(response).to redirect_to(new_user_session_path)
+      end
+    end
+
+    context "when authenticated" do
+      before do
+        sign_in user
+        create(:post, user: other_user, body: "Followed user post")
+        user.follow other_user
+      end
+
+      it "shows posts from followed users" do
+        get following_posts_path
+        expect(response).to have_http_status(:ok)
+        expect(response.body).to include("Followed user post")
+      end
+    end
+  end
+
   describe "POST /posts" do
     let(:params) { { post: attributes_for(:post) } }
 

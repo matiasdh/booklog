@@ -26,6 +26,11 @@ class Post < ApplicationRecord
     order(comments: { created_at: :desc })
   }
 
+  scope :for_user, ->(user) {
+    joins(user: :follower_follows)
+      .where(user_follows: { user: })
+  }
+
   def liked_by?(user)
     if likes.loaded?
       likes.any? { |v| v.user_id == user.id }
