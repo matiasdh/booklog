@@ -3,8 +3,15 @@ class ApplicationController < ActionController::Base
   allow_browser versions: :modern
   before_action :authenticate_user!
   before_action :configure_permitted_parameters, if: :devise_controller?
+  layout :layout_by_resource
 
   protected
+
+  def configure_permitted_parameters
+    devise_parameter_sanitizer.permit(:sign_up, keys: [ :username ])
+  end
+
+  private
 
   def ensure_turbo_stream_request!
     return if request.format.turbo_stream?
@@ -12,7 +19,8 @@ class ApplicationController < ActionController::Base
     head :not_acceptable
   end
 
-  def configure_permitted_parameters
-    devise_parameter_sanitizer.permit(:sign_up, keys: [ :username ])
+  def layout_by_resource
+    return "turbo_rails/frame" if turbo_frame_request?
+    devise_controller? ? "devise" : "application"
   end
 end
