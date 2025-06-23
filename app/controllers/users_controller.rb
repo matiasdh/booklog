@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   def show
+    @posts = user.posts.with_feed
   end
 
   def edit
