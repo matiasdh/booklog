@@ -4,3 +4,9 @@
   <%= turbo_stream_from "posts" %>
   <%= render partial: 'post', collection: @posts, locals: { user: current_user } %>
 </div>
+
+<div id="next-page-link">
+  <% if @pagy.next %>
+    <%= render partial: "posts/load_more_button", locals: { pagy: @pagy } %>
+  <% end %>
+</div>

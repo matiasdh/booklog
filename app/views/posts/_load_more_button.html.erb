@@ -1,0 +1,9 @@
+
+<div class="flex flex-row justify-center py-4 w-auto align-center">
+<%= link_to pagy_url_for(pagy, pagy.next),
+  class: "px-6 py-2 transition space-x-2 cursor-pointer",
+  data: { turbo_stream: true, controller: "autoclick-visible" } do %>
+  <%= icon "fading-dots", library: "animated", class: "size-4 inline" %>
+  <span>Loading</span>
+<% end %>
+</div>

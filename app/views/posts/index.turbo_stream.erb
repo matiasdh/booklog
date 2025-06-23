@@ -1,0 +1,9 @@
+<%= turbo_stream.append "posts-list" do %>
+  <%= render partial: "post", collection: @posts, locals: { user: current_user } %>
+<% end %>
+
+<%= turbo_stream.update "next-page-link" do %>
+  <% if @pagy.next %>
+    <%= render partial: "posts/load_more_button", locals: { pagy: @pagy } %>
+  <% end %>
+<% end %>

@@ -4,6 +4,9 @@
 
 import { application } from "./application"
 
+import AutoclickVisibleController from "./autoclick_visible_controller"
+application.register("autoclick-visible", AutoclickVisibleController)
+
 import CommentsController from "./comments_controller"
 application.register("comments", CommentsController)
 
