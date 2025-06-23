@@ -186,6 +186,11 @@ esbuild@^0.25.5:
     "@esbuild/win32-ia32" "0.25.5"
     "@esbuild/win32-x64" "0.25.5"
 
+stimulus-use@^0.52.3:
+  version "0.52.3"
+  resolved "https://registry.yarnpkg.com/stimulus-use/-/stimulus-use-0.52.3.tgz#d6f35fa93277274957a2ed98a7b04b4d702cb1d6"
+  integrity sha512-stZ5dID6FUrGCR/ChWUa0FT5Z8iqkzT6lputOAb50eF+Ayg7RzJj4U/HoRlp2NV333QfvoRidru9HLbom4hZVw==
+
 timeago.js@^4.0.2:
   version "4.0.2"
   resolved "https://registry.yarnpkg.com/timeago.js/-/timeago.js-4.0.2.tgz#724e8c8833e3490676c7bb0a75f5daf20e558028"
