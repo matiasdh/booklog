@@ -3,10 +3,12 @@ class Users::FollowController < ApplicationController
 
   def create
     current_user.follow(user)
+    user.reload # reload user to reload counter cache counts
   end
 
   def destroy
     current_user.unfollow(user)
+    user.reload # reload user to reload counter cache counts
   end
 
   private

@@ -1,6 +1,6 @@
 class UserFollow < ApplicationRecord
-  belongs_to :user
-  belongs_to :follow, class_name: "User"
+  belongs_to :user, counter_cache: :following_count
+  belongs_to :follow, class_name: "User", counter_cache: :followers_count
 
   validates :user, uniqueness: { scope: :follow_id }
 

@@ -1,0 +1,14 @@
+<%= turbo_frame_tag user, "follow-box" do %>
+  <!-- Followers / Following -->
+  <div class="flex justify-center space-x-10 mt-6 text-gray-700 text-center">
+    <div>
+      <p class="font-semibold text-xl"><%= user.followers_count %></p>
+      <p class="text-sm">Followers</p>
+    </div>
+    <div class="border-black border-l-1 min-h-full"></div>
+    <div>
+      <p class="font-semibold text-xl"><%= user.following_count %></p>
+      <p class="text-sm">Following</p>
+    </div>
+  </div>
+<%end%>
