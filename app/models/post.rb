@@ -8,6 +8,24 @@ class Post < ApplicationRecord
 
   validates :body, presence: true
 
+  scope :with_feed, -> { with_associations
+    .recent
+    .with_recent_comments
+  }
+
+  scope :with_associations, -> {
+    includes(:likes, :user, comments: :user)
+      .references(:comments)
+  }
+
+  scope :recent, -> {
+    order(created_at: :desc)
+  }
+
+  scope :with_recent_comments, -> {
+    order(comments: { created_at: :desc })
+  }
+
   def liked_by?(user)
     if likes.loaded?
       likes.any? { |v| v.user_id == user.id }

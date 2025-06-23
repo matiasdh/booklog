@@ -81,4 +81,66 @@ RSpec.describe Post, type: :model do
       expect(sorted.last).to eq(older)
     end
   end
+
+  describe "scopes" do
+    let!(:old_post) { create(:post, user: user, created_at: 2.days.ago) }
+    let!(:new_post) { create(:post, user: user, created_at: 1.day.ago) }
+
+    before do
+      create(:like,    post: old_post, user: user)
+      create(:comment, post: old_post, user: user, created_at: 2.days.ago)
+      create(:like,    post: new_post, user: user)
+      create(:comment, post: new_post, user: user, created_at: 1.day.ago)
+    end
+
+    describe ".recent" do
+      subject(:posts) { Post.recent.to_a }
+
+      it "orders posts by created_at DESC" do
+        expect(posts.map(&:id)).to eq [ new_post.id, old_post.id ]
+      end
+    end
+
+    describe ".with_associations" do
+      subject(:posts) { Post.with_associations.to_a }
+
+      it "eager loads user, likes and comments (and each comment's user)" do
+        # trigger load
+        posts
+
+        record = posts.first
+        expect(record.association(:user)).to be_loaded
+        expect(record.association(:likes)).to be_loaded
+        expect(record.association(:comments)).to be_loaded
+
+        first_comment = record.comments.first
+        expect(first_comment.association(:user)).to be_loaded
+      end
+    end
+
+    describe ".with_recent_comments" do
+      let!(:post)        { create(:post, user: user) }
+      let!(:old_comment) { create(:comment, post: post, created_at: 2.days.ago) }
+      let!(:new_comment) { create(:comment, post: post, created_at: 1.day.ago) }
+
+      subject(:posts) { Post.with_associations.with_recent_comments.where(id: post.id).to_a }
+
+      it "orders that post's comments by created_at DESC" do
+        loaded_post = posts.first
+        expect(loaded_post.comments.map(&:id)).to eq [ new_comment.id, old_comment.id ]
+      end
+    end
+
+    describe ".with_feed" do
+      it "chains through with_associations, recent, and with_recent_comments" do
+        # Stub the intermediate scopes to return the class itself
+        expect(Post).to receive(:with_associations).ordered.and_return(Post)
+        expect(Post).to receive(:recent).ordered.and_return(Post)
+        expect(Post).to receive(:with_recent_comments).ordered.and_return(Post)
+
+        # Trigger the scope
+        Post.with_feed
+      end
+    end
+  end
 end
