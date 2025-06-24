@@ -23,10 +23,10 @@ class User < ApplicationRecord
   end
 
   def follow(user)
-    user_follows.find_or_create_by(follow: user)
+    user_follows.find_or_create_by(follow: user).valid?
   end
 
   def unfollow(user)
-    user_follows.find_by(follow: user)&.destroy
+    user_follows.find_by(follow: user)&.destroy.present?
   end
 end

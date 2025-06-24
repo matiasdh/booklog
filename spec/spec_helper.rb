@@ -14,6 +14,7 @@
 #
 # See https://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
 require 'shoulda/matchers'
+require "factory_bot"
 
 RSpec.configure do |config|
   # rspec-expectations config goes here. You can use an alternate
@@ -96,4 +97,5 @@ RSpec.configure do |config|
 
   config.include(Shoulda::Matchers::ActiveModel, type: :model)
   config.include(Shoulda::Matchers::ActiveRecord, type: :model)
+  config.include(FactoryBot::Syntax::Methods)
 end

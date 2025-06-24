@@ -118,6 +118,9 @@ GEM
       tzinfo
     factory_bot (6.5.3)
       activesupport (>= 6.1.0)
+    factory_bot_rails (6.5.0)
+      factory_bot (~> 6.5)
+      railties (>= 6.1.0)
     faker (3.5.1)
       i18n (>= 1.8.11, < 2)
     ffi (1.17.2-aarch64-linux-gnu)
@@ -431,6 +434,7 @@ DEPENDENCIES
   debug
   devise (~> 4.9)
   factory_bot (~> 6.5)
+  factory_bot_rails (~> 6.4, >= 6.4.4)
   faker (~> 3.4, >= 3.4.2)
   jbuilder
   jsbundling-rails (~> 1.3)
