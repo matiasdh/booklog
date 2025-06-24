@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe User, type: :model do
   subject { create :user }
   let(:user_1) { create :user }
-  it "expects to have a valid factory" do
+  it "has a valid factory" do
     expect(subject).to be_valid
   end
 

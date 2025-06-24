@@ -109,6 +109,7 @@ GEM
       responders
       warden (~> 1.2.3)
     diff-lcs (1.6.2)
+    docile (1.4.1)
     dotenv (3.1.8)
     drb (2.2.3)
     ed25519 (1.4.0)
@@ -349,6 +350,12 @@ GEM
       websocket (~> 1.0)
     shoulda-matchers (6.5.0)
       activesupport (>= 5.2.0)
+    simplecov (0.22.0)
+      docile (~> 1.1)
+      simplecov-html (~> 0.11)
+      simplecov_json_formatter (~> 0.1)
+    simplecov-html (0.13.1)
+    simplecov_json_formatter (0.1.4)
     solid_cable (3.0.8)
       actioncable (>= 7.2)
       activejob (>= 7.2)
@@ -433,7 +440,6 @@ DEPENDENCIES
   capybara
   debug
   devise (~> 4.9)
-  factory_bot (~> 6.5)
   factory_bot_rails (~> 6.4, >= 6.4.4)
   faker (~> 3.4, >= 3.4.2)
   jbuilder
@@ -450,6 +456,7 @@ DEPENDENCIES
   rubocop-rails-omakase
   selenium-webdriver
   shoulda-matchers (~> 6.0)
+  simplecov
   solid_cable
   solid_cache
   solid_queue

@@ -15,17 +15,11 @@ class Post < ApplicationRecord
   end
 
   def mark_as_liked_by(user:)
-    return false if liked_by?(user)
-
-    likes.create!(user: user)
-    true
+    likes.find_or_create_by(user: user).present?
   end
 
   def remove_like_from(user:)
-    false unless liked_by?(user)
-
-    likes.find_by(user: user).destroy!
-    true
+    likes.find_by(user: user)&.destroy.present?
   end
 
   def sorted_comments_by_date
