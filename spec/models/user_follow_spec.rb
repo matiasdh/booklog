@@ -3,13 +3,14 @@ require 'rails_helper'
 RSpec.describe UserFollow, type: :model do
   let(:user) { create(:user) }
   let(:follow) { create(:user) }
+  subject { build(:user_follow, user:, follow:) }
 
   it "has a valid factory" do
-    expect(build(:user_follow, user:, follow:)).to be_valid
+    expect(subject).to be_valid
   end
 
   context "validations" do
-    subject { build(:user_follow, user:, follow:) }
+    it { is_expected.to validate_uniqueness_of(:user).scoped_to(:follow_id) }
 
     context "when a user tries to follow themselves" do
       subject { build(:user_follow, user: user, follow: user) }

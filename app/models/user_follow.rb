@@ -2,7 +2,7 @@ class UserFollow < ApplicationRecord
   belongs_to :user
   belongs_to :follow, class_name: "User"
 
-  validates :user, uniqueness: { scope: :follow }
+  validates :user, uniqueness: { scope: :follow_id }
 
   validate :user_cannot_follow_themselves
 
