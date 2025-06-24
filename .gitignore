@@ -11,6 +11,10 @@
 /.env*
 
 # Ignore all logfiles and tempfiles.
+/coverage/*
+!/coverage/.keep
+
+# Ignore all logfiles and tempfiles.
 /log/*
 /tmp/*
 !/log/.keep
