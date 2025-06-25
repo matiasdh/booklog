@@ -1,4 +1,6 @@
 class PostsController < ApplicationController
+  before_action :ensure_turbo_stream_request!, only: %i[ create ]
+
   def index
     @posts = Post.includes(:likes, :user, comments: [ :user ])
       .references(:comments)

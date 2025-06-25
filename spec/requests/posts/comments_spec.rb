@@ -44,12 +44,18 @@ RSpec.describe "Posts::Comments", type: :request do
       end
     end
 
-    it "returns unprocessable entity if comment is invalid" do
-      expect {
-        post post_comments_path(post_record, format: :turbo_stream), params: { comment: { body: "" } }
-      }.not_to change(Comment, :count)
+    context "with invalid params" do
+      before do
+        get "/"
+        sign_in user
+      end
 
-      expect(response).to have_http_status(:unprocessable_entity)
+      it "returns unprocessable entity" do
+        expect {
+          post post_comments_path(post_record, format: :turbo_stream), params: { comment: { body: "" } }
+        }.not_to change(Comment, :count)
+        expect(response).to have_http_status(:unprocessable_entity)
+      end
     end
   end
 end

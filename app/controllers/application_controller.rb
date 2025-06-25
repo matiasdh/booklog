@@ -15,6 +15,12 @@ class ApplicationController < ActionController::Base
 
   private
 
+  def ensure_turbo_stream_request!
+    return if request.format.turbo_stream?
+
+    head :not_acceptable
+  end
+
   def layout_by_resource
     return "turbo_rails/frame" if turbo_frame_request?
     devise_controller? ? "devise" : "application"
