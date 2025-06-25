@@ -3,7 +3,11 @@ class Posts::CommentsController < ApplicationController
     @comment = post.comments.new(comment_params)
     @comment.user = current_user
 
-   @comment.save!
+   if @comment.save
+    render :create
+   else
+    render :new, status: :unprocessable_entity
+   end
   end
 
   private

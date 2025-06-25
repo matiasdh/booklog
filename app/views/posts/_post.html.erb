@@ -46,7 +46,7 @@
     <div class="flex-1 bg-stone-100 p-2 rounded-b-2xl transition-all transform">
       <!-- Comment form -->
       <div data-comments-target="form" class="hidden w-full">
-        <%= render 'posts/comments/form', post: post %>
+        <%= render 'posts/comments/form', post: post, comment: Comment.new %>
       </div>
       <!-- Comments -->
       <% if post.comments.any? %>

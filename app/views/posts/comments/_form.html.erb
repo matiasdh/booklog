@@ -1,6 +1,14 @@
-<%= form_with model: [post, Comment.new], class: "flex space-x-2 px-3 mt-1 content-bottom items-end" do |f| %>
-    <%= f.text_area :body, rows: 2, placeholder: "Write a comment...", class: "w-full p-2 rounded-lg resize-none focus:outline-none focus:ring-2 focus:ring-teal-300 bg-white text-sm" %>
+<%= turbo_frame_tag post, "new_comment" do %>
+  <%= form_with model: [post, comment], class: "flex space-x-2 px-3 mt-1 content-bottom items-start" do |f| %>
+    <div class="flex flex-col space-y-1 w-full">
+      <%= f.text_area :body, rows: 2, placeholder: "Write a comment...", class: "w-full p-2 rounded-lg resize-none focus:outline-none focus:ring-2 focus:ring-teal-300 bg-white text-sm" %>
+
+      <% comment.errors.full_messages_for(:body).each do |message| %>
+        <p class="flex flex-grow w-full font-semibold text-red-600 text-sm"><%= message %></p>
+      <% end %>
+    </div>
     <div class="mt-2 text-right">
-      <%= f.submit "Send", class: "bg-teal-300 hover:bg-teal-400 text-black px-4 py-1 text-sm rounded" %>
-  </div>
+      <%= f.submit "Send", class: "bg-teal-300 hover:bg-teal-400 text-black px-4 py-2 text-sm rounded" %>
+    </div>
+  <% end %>
 <% end %>
