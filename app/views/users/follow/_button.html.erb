@@ -1,7 +1,7 @@
-<% classes = user.follows?(current_user) ? "bg-black hover:text-teal-300 text-white" : "bg-teal-300 hover:bg-black hover:text-white" %>
-<% button_method = user.follows?(current_user) ? :delete : :post %>
-<% button_label = user.follows?(current_user) ? "Following" : "Follow" %>
-<% button_icon = user.follows?(current_user) ? "user-minus" : "user-plus" %>
+<% classes = current_user.follows?(user) ? "bg-black hover:text-teal-300 text-white" : "bg-teal-300 hover:bg-black hover:text-white" %>
+<% button_method = current_user.follows?(user) ? :delete : :post %>
+<% button_label = current_user.follows?(user) ? "Following" : "Follow" %>
+<% button_icon = current_user.follows?(user) ? "user-minus" : "user-plus" %>
 <%= turbo_frame_tag user, "follow_button", class: "group/frame" do %>
   <% unless current_user == user %>
     <%= button_to follow_user_path(user), method: button_method, class: "px-6 py-2 rounded-full transition flex flex-row space-x-2 items-center cursor-pointer #{classes}", data: { turbo_method: button_method } do %>

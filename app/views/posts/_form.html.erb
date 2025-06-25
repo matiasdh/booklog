@@ -1,14 +1,19 @@
+<%= turbo_frame_tag "new-post-form" do %>
 <div class="top-0 z-10 sticky">
-  <div class="top-0 absolute flex mask-b-from-80% backdrop-blur-sm w-full h-full">
-  </div>
-
+  <div class="top-0 absolute flex mask-b-from-80% backdrop-blur-sm w-full h-full"></div>
   <%= form_with model: post, class: "relative mx-2 pt-6 pb-8 flex space-x-2 text-lg" do |form| %>
-    <%= form.text_area :body,
-      placeholder: "What's on your mind?",
-      rows: 2,
-      class: "flex-grow p-3 border border-gray-300 bg-white rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500 resize-none" %>
+    <div class="flex flex-col flex-grow space-y-1 min-w-0">
+      <%= form.text_area :body,
+        placeholder: "What's on your mind?",
+        rows: 2,
+        class: "w-full p-3 border border-gray-300 bg-white rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500 resize-none" %>
+      <% post.errors.full_messages_for(:body).each do |message| %>
+        <p class="flex flex-grow w-full font-semibold text-red-600 text-sm"><%= message %></p>
+      <% end %>
+    </div>
 
     <%= form.submit 'Post',
       class: "size-20 flex bg-teal-300 text-black hover:text-white hover:bg-black rounded-full font-semibold px-5 py-2 transition hover:cursor-pointer" %>
   <% end %>
 </div>
+<% end %>

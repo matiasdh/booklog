@@ -19,6 +19,7 @@ RSpec.describe User, type: :model do
     it { is_expected.to have_many(:comments).dependent(:destroy) }
     it { is_expected.to have_many(:user_follows).dependent(:destroy) }
     it { is_expected.to have_many(:followed_users).through(:user_follows).source(:follow) }
+    it { is_expected.to have_many(:follower_follows).dependent(:destroy) }
   end
 
   describe "#follows?" do

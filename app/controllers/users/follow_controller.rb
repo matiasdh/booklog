@@ -1,10 +1,10 @@
 class Users::FollowController < ApplicationController
   def create
-    user.follow(current_user)
+    current_user.follow(user)
   end
 
   def destroy
-    user.unfollow(current_user)
+    current_user.unfollow(user)
   end
 
   private

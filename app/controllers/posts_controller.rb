@@ -1,45 +1,34 @@
 class PostsController < ApplicationController
   def index
-    @posts = Post.includes(:likes, :user, comments: [ :user ]).references(:comments).order(posts: { created_at: :desc }, comments: { created_at: :desc })
+    @posts = Post.includes(:likes, :user, comments: [ :user ])
+      .references(:comments)
+      .order(posts: { created_at: :desc }, comments: { created_at: :desc })
   end
 
   def following
     @posts = Post.includes(:likes, :user, comments: [ :user ])
-    .joins(user: :user_follows).references(:comments)
-    .where(user_follows: { follow: current_user })
-    .order(posts: { created_at: :desc }, comments: { created_at: :desc })
+      .references(:comments)
+      .joins(user: :follower_follows)
+      .where(user_follows: { user: current_user })
+      .order(posts: { created_at: :desc }, comments: { created_at: :desc })
 
     render :index
   end
 
-  def show
-  end
-
   def create
-    @post = current_user.posts.create!(post_params)
-  end
+    @post = current_user.posts.build(post_params)
 
-  def like
-    return head :unprocessable_entity if post.liked_by?(current_user)
-
-    post.mark_as_liked_by(user: current_user)
-  end
-
-  def unlike
-    return head :unprocessable_entity unless post.liked_by?(current_user)
-
-    post.remove_like_from(user: current_user)
-
-    render :like
-  end
-
-  def destroy
+    if @post.save
+      render :create
+    else
+      render :new, status: :unprocessable_entity
+    end
   end
 
   private
 
   def post_params
-    params.expect(post: [ :body ])
+    params.require(:post).permit(:body)
   end
 
   def post

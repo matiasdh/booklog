@@ -18,6 +18,8 @@ class User < ApplicationRecord
   has_many :user_follows, dependent: :destroy
   has_many :followed_users, through: :user_follows, source: :follow
 
+  has_many :follower_follows, class_name: "UserFollow", foreign_key: :follow_id, dependent: :destroy
+
   def follows?(user)
     user_follows.exists?(follow: user)
   end

@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   get "dashboard/index"
   devise_for :users
 
-  resources :posts, only: %i[index show create destroy] do
+  resources :posts, only: %i[index create] do
     collection do
       get :following, action: :following, controller: "posts"
     end

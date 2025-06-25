@@ -1,6 +1,4 @@
-<turbo-frame id="new-post-form">
-  <%= render 'form', post: Post.new %>
-</turbo-frame>
+<%= render 'form', post: Post.new %>
 
 <div class="space-y-6 m-auto max-w-4xl" id="posts-list">
   <%= turbo_stream_from "posts" %>
