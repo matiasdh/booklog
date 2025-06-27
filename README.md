@@ -1,24 +1,61 @@
-# README
+# 📚 BookLog
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+BookLog is a small social network made with **Ruby on Rails**, **Hotwire**, and **TailwindCSS**. It has the main features of a social feed and its design is clean and easy to use.
 
-Things you may want to cover:
+## 🎯 Why Was BookLog Made?
 
-* Ruby version
+BookLog was created to:
 
-* System dependencies
+- Build a full-stack MVP using Rails 8 and PostgreSQL
+- Practicing Hotwire features: Turbo, Turbo Frames, Turbo Streams, and Stimulus
+- Make a simple and responsive design with TailwindCSS
+- Use complex relationships (followers, likes, comments)
+- Add end-to-end tests with RSpec, FactoryBot
 
-* Configuration
+## 🛠️ Technologies
 
-* Database creation
+- **Ruby on Rails 8**
+- **Hotwire** (Turbo + Stimulus)
+- **TailwindCSS**
+- **PostgreSQL**
+- **Devise** (for login and authentication)
+- **RSpec** and **FactoryBot**(for testing)
 
-* Database initialization
+## 🔍 Main Features
 
-* How to run the test suite
+- Register, log in, and log out (Devise)
+- Create posts about books
+- Like and comment on posts
+- Follow and unfollow other users
+- View eser profiles with follower and following counts
+- See a feed with posts from users you follow
 
-* Services (job queues, cache servers, search engines, etc.)
+## 🔮 Future Plans
 
-* Deployment instructions
+- Search for users
+- Upload profile images
+- Improve the edit profile page
+- Better support for mobile devices
 
-* ...
+## 🚀 How to Run BookLog Locally
+
+1. Clone the repository:
+    ```bash
+    git clone https://github.com/yourusername/booklog.git
+    cd booklog
+    ```
+2. Install dependencies:
+    ```bash
+    bundle install
+    yarn install
+    ```
+3. Set up the database:
+    ```bash
+    rails db:setup
+    ```
+4. Start the app:
+    ```bash
+    bin/dev
+    ```
+
+Open [http://localhost:3000](http://localhost:3000) in your browser to use BookLog.
