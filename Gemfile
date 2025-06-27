@@ -56,7 +56,7 @@ group :development, :test do
 
 # Spec suite
 group :development, :test do
-  gem "rspec-rails", "~> 8.0.0"
+  gem "rspec-rails", "~> 8.0.1"
   gem "factory_bot_rails", "~> 6.4", ">= 6.4.4"
 end
 
