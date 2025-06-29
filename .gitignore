@@ -42,4 +42,5 @@ node_modules
 
 .vscode
 
-/node_modules
+/.github
+/.kamal
