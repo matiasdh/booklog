@@ -44,3 +44,4 @@ node_modules
 
 /.github
 /.kamal
+config/database.yml
