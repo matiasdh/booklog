@@ -2,6 +2,9 @@
 
 BookLog is a small social network made with **Ruby on Rails**, **Hotwire**, and **TailwindCSS**. It has the main features of a social feed and its design is clean and easy to use.
 
+![booklog](https://github.com/user-attachments/assets/14ea7cd2-f982-4b52-b139-70d852cb505f)
+
+
 ## 🎯 Why Was BookLog Made?
 
 BookLog was created to:
@@ -30,8 +33,11 @@ BookLog was created to:
 - View eser profiles with follower and following counts
 - See a feed with posts from users you follow
 
+https://github.com/user-attachments/assets/ac669720-3928-4c38-9d2a-982a2bef304c
+
 ## 🔮 Future Plans
 
+- ViewComponents
 - Turbo Streams
 - Search for users
 - Upload profile images
