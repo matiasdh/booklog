@@ -27,10 +27,11 @@ BookLog was created to:
 ## 🔍 Main Features
 
 - Register, log in, and log out (Devise)
+- Post feeds support infinite scroll using Pagy for pagination
 - Create posts about books
 - Like and comment on posts
 - Follow and unfollow other users
-- View eser profiles with follower and following counts
+- View user profiles with follower and following counts
 - See a feed with posts from users you follow
 
 https://github.com/user-attachments/assets/ac669720-3928-4c38-9d2a-982a2bef304c
